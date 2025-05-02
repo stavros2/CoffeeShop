@@ -1,7 +1,10 @@
-using CoffeeOrderAPI.Data;
-using CoffeeOrderAPI.Models;
 using Microsoft.AspNetCore.Mvc;
+using CoffeeOrderAPI.Models;
+using CoffeeOrderAPI.Data;
+using System;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+
 
 namespace CoffeeOrderAPI.Controllers
 {
@@ -22,7 +25,7 @@ namespace CoffeeOrderAPI.Controllers
             var order = new Order
             {
                 Id = Guid.NewGuid(),
-                PayloadJson = payload.ToString()
+                PayloadJson = payload?.ToString() ?? string.Empty
             };
 
             _context.Orders.Add(order);
