@@ -2,4 +2,4 @@
 *.nuget.*
 *.targets
 **CoffeeOrderAPI/obj/
-**CoffeeOrderAPI/Migrations/
+**CoffeeOrderAPI/bin/
