@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using CoffeeOrderAPI.Models;
+using CoffeeOrderAPI.Models.DTOs;
 using CoffeeOrderAPI.Data;
 using System;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 
 namespace CoffeeOrderAPI.Controllers
@@ -20,12 +22,17 @@ namespace CoffeeOrderAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateOrder([FromBody] object payload)
+        public async Task<IActionResult> CreateOrder([FromBody] CoffeeOrderDto orderDto)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var order = new Order
             {
                 Id = Guid.NewGuid(),
-                PayloadJson = payload?.ToString() ?? string.Empty
+                PayloadJson = JsonConvert.SerializeObject(orderDto)
             };
 
             _context.Orders.Add(order);
