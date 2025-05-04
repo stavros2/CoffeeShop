@@ -7,9 +7,10 @@ Welcome to CoffeeShop - a simple yet robust Web API for processing coffee orders
    "ConnectionStrings": {
      "DefaultConnection": "Host=localhost;Port=5432;Username=your_user;Password=your_password;Database=your_database"
    }
-3. Run the setup.bat. This will build the project as well as migrate the database
-4. Run the run.bat to launch the application. 
+3. Run the setup.bat script. This will build the project as well as migrate the database
+4. Run the run.bat script to launch the application. 
 5. You are ready to start receiving orders
+6. If you ever wish to uninstall, run the clean.bat script
 
 ## Assumptions made
 1. If an order fails, 3 retries will occur and then fails permanently
@@ -18,8 +19,13 @@ Welcome to CoffeeShop - a simple yet robust Web API for processing coffee orders
 ##  Design Decisions
 1. The API is publicly accessible - no authentication or API tokens are required.
 2. SwaggerUI is available for testing the endpoints through HTTP on Port 5005 on localhost (http://localhost:5005/swagger/index.html)
+3. Data are held raw in the DB.
 
 ## Prerequisites
 1. .NET 8 SDK(https://dotnet.microsoft.com/download)
 2. Entity Framework CLI tool (dotnet tool install --global dotnet-ef)
 2. PostgreSQL(https://www.postgresql.org/download/)
+
+## Future improvements
+1. Create a Frontend for the application
+2. Create unit tests
